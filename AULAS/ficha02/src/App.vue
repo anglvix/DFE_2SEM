@@ -1,14 +1,14 @@
 <script>
-  import EX4 from '@/components/EX4.vue'
+  import LifeCycle from '@/components/LifeCycle.vue'
   export default {
     components: {
-      EX4
+      LifeCycle
     },
   };
 </script>
 
 <template>
-  <EX4 />
+  <LifeCycle />
 </template>
 
 <style scoped></style>
