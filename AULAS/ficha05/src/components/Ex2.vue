@@ -1,37 +1,33 @@
 <script>
     export default {
         data() {
-                return {
-                contador: 0
+            return {
+                tecnologia: '',
+                tipoEvento: '',
+                textoBotao: '',
+                totalCliques: 0
             }
         },
-            methods: {
-                incrementar() {
-                this.contador++
-            },
-                decrementar() {
-                this.contador--
-            },
-                reset() {
-                this.contador = 0
-            },  
-                incrementar5() {
-                this.contador += 5 
-            },
-                decrementar5() {
-                this.contador -= 5 
-            },
-                },
+        methods: {
+            apresentarTecnologia(tecnologia, event) {
+                this.tecnologia = tecnologia
+                this.tipoEvento = event.type
+                this.textoBotao = event.currentTarget.textContent
+                this.totalCliques++
+            }
+        }
     };
 </script>
 
 <template>
-    <p>Contador: {{ contador }}</p> 
-    <button @click="incrementar">Incrementar</button>
-    <button @click="decrementar">Decrementar</button>
-    <button @click="reset">Reset</button>
-    <button @click="incrementar5">Incrementar 5</button>
-    <button @click="decrementar5">Decrementar 5</button>
+    <button @click="apresentarTecnologia('Vue', $event)">Vue</button>
+    <button @click="apresentarTecnologia('JavaScript', $event)">JavaScript</button>
+    <button @click="apresentarTecnologia('CSS', $event)">CSS</button>
+
+    <p v-if="tecnologia">Tecnologia: {{ tecnologia }}</p>
+    <p v-if="tipoEvento">Tipo de evento: {{ tipoEvento }}</p>
+    <p v-if="textoBotao">Texto do botão: {{ textoBotao }}</p>
+    <p>Total de cliques: {{ totalCliques }}</p>
 </template>
 
 <style scoped>
