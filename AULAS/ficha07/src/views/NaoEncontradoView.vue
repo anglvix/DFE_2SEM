@@ -1,17 +1,14 @@
 <template>
     <div>
         <h1>Página não encontrada</h1>
+        <RouterLink :to="{ name: 'inicio' }">
+            Voltar ao inicio
+        </RouterLink>
     </div>
-
-    <p>
-        <button @click=voltar>
-            Voltar
-        </button>
-    </p>
-
 </template>
 
 <script>
+    import { RouterLink } from 'vue-router';
     export default {
         methods: {
             voltar() {
