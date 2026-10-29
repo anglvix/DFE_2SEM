@@ -1,16 +1,19 @@
 <template>
     <div>
         <div v-if="workshop">
-        <h2>{{ workshop.titulo }}</h2>
-        <p>Vagas: {{ workshop.vagas }}</p>
+            <h2>{{ workshop.titulo }}</h2>
+            <p>Vagas: {{ workshop.vagas }}</p>
         </div>
 
         <div v-else>
-        <p>Workshop não encontrado</p>
-        <RouterLink to="/workshops">
-            Voltar ao catálogo
-        </RouterLink>
+            <p>Workshop não encontrado</p>
         </div>
+
+        <p>
+            <button @click=voltar>
+                Voltar
+            </button>
+        </p>
 
         <hr/>
 
@@ -30,19 +33,24 @@
     import workshops from '../data/workshops'
 
     export default {
-    computed: {
-        workshop() {
-        const id = Number(this.$route.params.id)
+        computed: {
+            workshop() {
+            const id = Number(this.$route.params.id)
 
-        return workshops.find((workshop) => workshop.id === id)
-        }
-    },
+            return workshops.find((workshop) => workshop.id === id)
+            }
+        },
 
-    watch: {
-        '$route.params.id'(newId) {
-        console.log('Novo ID:', newId)
+        watch: {
+            '$route.params.id'(newId) {
+            console.log('Novo ID:', newId)
+            }
+        },
+        methods: {
+            voltar() {
+            this.$router.go(-1)
+            }
         }
-    }
     }
 </script>
 

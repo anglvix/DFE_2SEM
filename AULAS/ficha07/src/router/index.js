@@ -3,6 +3,7 @@ import InicioView from '../views/InicioView.vue'
 import ContactosView from '../views/ContactosView.vue'
 import WorkshopsView from '../views/WorkshopsView.vue'
 import WorkshopView from '../views/WorkshopView.vue'
+import NaoEncontradoView from '../views/NaoEncontradoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/workshops/:id',
       name: 'workshop',
       component: WorkshopView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'notfound',
+      component: NaoEncontradoView
     }
   ]
 })
